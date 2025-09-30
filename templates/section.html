@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section-page">
+    <h2>{{ title }}</h2>
+    <p>Здесь будет содержимое раздела {{ section_id }}.</p>
+    <p>Ты можешь добавить формы, чек-боксы, таблицы — все что нужно для твоего чек-листа.</p>
+
+    <div class="back-button">
+        <a href="{{ url_for('index') }}">← Назад в меню</a>
+    </div>
+</div>
+{% endblock %}
