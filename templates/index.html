@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="menu-grid">
+    <a href="{{ url_for('section1') }}" class="menu-button">
+        <span>Ежедневное ТО</span>
+    </a>
+    <a href="{{ url_for('section2') }}" class="menu-button">
+        <span>Еженедельное ТО</span>
+    </a>
+    <a href="{{ url_for('section3') }}" class="menu-button">
+        <span>Месячное ТО</span>
+    </a>
+    <a href="{{ url_for('section4') }}" class="menu-button">
+        <span>Эксплуатация</span>
+    </a>
+</div>
+{% endblock %}
