@@ -1,13 +1,96 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="section-page">
-    <h2>{{ title }}</h2>
-    <p>Здесь будет содержимое раздела {{ section_id }}.</p>
-    <p>Ты можешь добавить формы, чек-боксы, таблицы — все что нужно для твоего чек-листа.</p>
+<div class="checklist-page">
+    <!-- Поле для номера прибора -->
+    <div class="device-input-container">
+        <div class="device-input-group">
+            <label for="device_number">Номер прибора:</label>
+            <input type="text" id="device_number" name="device_number"
+                   placeholder="Введите номер прибора" required>
+        </div>
+    </div>
 
+    <!-- Чек-лист -->
+    <div class="checklist-main">
+        <h2 class="checklist-title">Чек-лист {{ title }}</h2>
+
+        <div class="checklist-items-grid">
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">1</span>
+                    <span class="task-description">Проверить давление в системе</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">2</span>
+                    <span class="task-description">Проверить уровень масла</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">3</span>
+                    <span class="task-description">Осмотреть на наличие утечек</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">4</span>
+                    <span class="task-description">Проверить работу клапанов</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Можно добавить больше карточек по этому шаблону -->
+        </div>
+    </div>
+
+    <!-- Кнопка сохранить -->
+    <div class="save-button-container">
+        <button class="save-button-large" onclick="validateChecklist()">Сохранить чек-лист</button>
+    </div>
+
+    <!-- Кнопка назад -->
     <div class="back-button">
         <a href="{{ url_for('index') }}">← Назад в меню</a>
     </div>
 </div>
+
+<script>
+function validateChecklist() {
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    const deviceNumber = document.getElementById('device_number').value;
+
+    if (!deviceNumber) {
+        alert('Введите номер прибора!');
+        return;
+    }
+
+    if (!allChecked) {
+        alert('ВНИМАНИЕ: Чек-лист не выполнен полностью! Не все задачи выполнены.');
+    } else {
+        alert('Чек-лист успешно сохранен для прибора: ' + deviceNumber);
+    }
+}
+</script>
 {% endblock %}
