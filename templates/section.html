@@ -2,12 +2,17 @@
 
 {% block content %}
 <div class="checklist-page">
-    <!-- Поле для номера прибора -->
+    <!-- Поля для ввода данных -->
     <div class="device-input-container">
         <div class="device-input-group">
             <label for="device_number">Номер прибора:</label>
             <input type="text" id="device_number" name="device_number"
                    placeholder="Введите номер прибора" required>
+        </div>
+        <div class="device-input-group">
+            <label for="user_name">ФИО:</label>
+            <input type="text" id="user_name" name="user_name"
+                   placeholder="Введите ФИО" required>
         </div>
     </div>
 
@@ -59,8 +64,6 @@
                     <span class="toggle-slider"></span>
                 </label>
             </div>
-
-            <!-- Можно добавить больше карточек по этому шаблону -->
         </div>
     </div>
 
@@ -80,16 +83,22 @@ function validateChecklist() {
     const checkboxes = document.querySelectorAll('.task-checkbox');
     const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
     const deviceNumber = document.getElementById('device_number').value;
+    const userName = document.getElementById('user_name').value;
 
     if (!deviceNumber) {
         alert('Введите номер прибора!');
         return;
     }
 
+    if (!userName) {
+        alert('Введите ФИО!');
+        return;
+    }
+
     if (!allChecked) {
         alert('ВНИМАНИЕ: Чек-лист не выполнен полностью! Не все задачи выполнены.');
     } else {
-        alert('Чек-лист успешно сохранен для прибора: ' + deviceNumber);
+        alert('Чек-лист успешно сохранен для прибора: ' + deviceNumber + '\nИсполнитель: ' + userName);
     }
 }
 </script>
