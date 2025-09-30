@@ -620,3 +620,45 @@ footer {
         justify-content: center;
     }
 }
+/* Поля для ввода данных */
+.device-input-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.device-input-group {
+    margin-bottom: 20px;
+}
+
+.device-input-group:last-child {
+    margin-bottom: 0;
+}
+
+.device-input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #2a5298;
+    font-size: 1.2rem;
+}
+
+.device-input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.device-input-group input:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 8px 25px rgba(42, 82, 152, 0.3);
+    transform: translateY(-2px);
+}
