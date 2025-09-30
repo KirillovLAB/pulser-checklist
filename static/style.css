@@ -403,3 +403,220 @@ footer {
         margin: 10px;
     }
 }
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .checklist-main {
+        padding: 20px 15px;
+        margin: 0;
+        border-radius: 15px;
+    }
+
+    .checklist-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    /* Карточки на всю ширину */
+    .checklist-card {
+        flex-direction: row;
+        align-items: center;
+        padding: 20px 15px;
+        margin: 0 -5px;
+        border-radius: 15px;
+        min-height: 80px;
+    }
+
+    .task-content {
+        flex-direction: row;
+        align-items: center;
+        flex: 1;
+    }
+
+    .task-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .task-description {
+        font-size: 1rem;
+        line-height: 1.3;
+        flex: 1;
+    }
+
+    /* Переключатели компактнее */
+    .check-toggle {
+        width: 60px;
+        height: 30px;
+        margin-left: 15px;
+        flex-shrink: 0;
+    }
+
+    .toggle-slider:before {
+        height: 24px;
+        width: 24px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    .check-toggle input:checked + .toggle-slider:before {
+        transform: translateX(30px);
+    }
+
+    /* Поле ввода на всю ширину */
+    .device-input-container {
+        padding: 20px 15px;
+        margin: 0 0 20px 0;
+        border-radius: 15px;
+    }
+
+    .device-input-group input {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    /* Кнопки на всю ширину */
+    .save-button-large {
+        width: 100%;
+        min-width: auto;
+        padding: 20px;
+        font-size: 1.2rem;
+        min-height: 70px;
+        border-radius: 15px;
+    }
+
+    .back-button a {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    /* Улучшаем отступы */
+    .checklist-items-grid {
+        gap: 15px;
+    }
+
+    .save-button-container {
+        margin: 30px 0 20px 0;
+    }
+}
+
+/* Дополнительные улучшения для очень маленьких экранов */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .checklist-title {
+        font-size: 1.6rem;
+    }
+
+    .checklist-card {
+        padding: 18px 12px;
+    }
+
+    .task-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        margin-right: 12px;
+    }
+
+    .task-description {
+        font-size: 0.95rem;
+    }
+
+    .check-toggle {
+        width: 55px;
+        height: 28px;
+        margin-left: 10px;
+    }
+
+    .toggle-slider:before {
+        height: 22px;
+        width: 22px;
+    }
+
+    .check-toggle input:checked + .toggle-slider:before {
+        transform: translateX(27px);
+    }
+}
+
+/* Улучшаем главное меню для мобильных */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 100%;
+    }
+
+    .menu-button {
+        min-height: 120px;
+        font-size: 1.3rem;
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+
+    header {
+        margin-bottom: 30px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Улучшаем читаемость на маленьких экранах */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    /* Убираем лишние тени на мобильных для производительности */
+    .checklist-card,
+    .device-input-container,
+    .checklist-main {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .menu-button {
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+}
+
+/* Улучшаем взаимодействие с touch */
+@media (max-width: 768px) {
+    .check-toggle {
+        min-height: 44px; /* Минимальный размер для touch */
+        min-width: 60px;
+    }
+
+    .menu-button {
+        min-height: 120px; /* Удобно для нажатия пальцем */
+    }
+
+    .save-button-large {
+        min-height: 70px;
+    }
+
+    .back-button a {
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
