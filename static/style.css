@@ -1,159 +1,96 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+{% extends "base.html" %}
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: #333;
-    min-height: 100vh;
-    line-height: 1.6;
-}
+{% block content %}
+<div class="checklist-page">
+    <!-- Поле для номера прибора -->
+    <div class="device-input-container">
+        <div class="device-input-group">
+            <label for="device_number">Номер прибора:</label>
+            <input type="text" id="device_number" name="device_number"
+                   placeholder="Введите номер прибора" required>
+        </div>
+    </div>
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+    <!-- Чек-лист -->
+    <div class="checklist-main">
+        <h2 class="checklist-title">Чек-лист {{ title }}</h2>
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
-    color: white;
-}
+        <div class="checklist-items-grid">
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">1</span>
+                    <span class="task-description">Проверить давление в системе</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">2</span>
+                    <span class="task-description">Проверить уровень масла</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
 
-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">3</span>
+                    <span class="task-description">Осмотреть на наличие утечек</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
 
-main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            <div class="checklist-card">
+                <div class="task-content">
+                    <span class="task-number">4</span>
+                    <span class="task-description">Проверить работу клапанов</span>
+                </div>
+                <label class="check-toggle">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
 
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    max-width: 800px;
-    width: 100%;
-}
+            <!-- Можно добавить больше карточек по этому шаблону -->
+        </div>
+    </div>
 
-.menu-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    border: none;
-    border-radius: 20px;
-    padding: 40px 20px;
-    text-decoration: none;
-    color: #2a5298;
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    min-height: 180px;
-    position: relative;
-    overflow: hidden;
-}
+    <!-- Кнопка сохранить -->
+    <div class="save-button-container">
+        <button class="save-button-large" onclick="validateChecklist()">Сохранить чек-лист</button>
+    </div>
 
-.menu-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: left 0.5s;
-}
+    <!-- Кнопка назад -->
+    <div class="back-button">
+        <a href="{{ url_for('index') }}">← Назад в меню</a>
+    </div>
+</div>
 
-.menu-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    color: #1e3c72;
-}
+<script>
+function validateChecklist() {
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    const deviceNumber = document.getElementById('device_number').value;
 
-.menu-button:hover::before {
-    left: 100%;
-}
-
-.section-page {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-}
-
-.section-page h2 {
-    color: #2a5298;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-.back-button {
-    margin-top: 30px;
-}
-
-.back-button a {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #2a5298;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: background 0.3s ease;
-}
-
-.back-button a:hover {
-    background: #1e3c72;
-}
-
-footer {
-    text-align: center;
-    margin-top: 40px;
-    color: white;
-    opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-    .menu-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    if (!deviceNumber) {
+        alert('Введите номер прибора!');
+        return;
     }
 
-    header h1 {
-        font-size: 2rem;
-    }
-
-    .menu-button {
-        min-height: 140px;
-        font-size: 1.2rem;
-        padding: 30px 15px;
-    }
-
-    .section-page {
-        padding: 25px;
-        margin: 10px;
+    if (!allChecked) {
+        alert('ВНИМАНИЕ: Чек-лист не выполнен полностью! Не все задачи выполнены.');
+    } else {
+        alert('Чек-лист успешно сохранен для прибора: ' + deviceNumber);
     }
 }
+</script>
+{% endblock %}
